@@ -11,8 +11,9 @@
 """
 
 
-import day_1
+from advent_of_code_2023 import day_1, day_2
 
 
 if __name__ == "__main__":
     day_1.solve_puzzle()
+    day_2.solve_puzzle()
