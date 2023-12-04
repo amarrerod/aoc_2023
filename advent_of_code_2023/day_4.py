@@ -27,11 +27,9 @@ def wining_numbers(line):
 
 def won_copies(lines):
     memo = dict(tuple(wining_numbers(line) for line in lines))
-    print(memo)
-
     total_cards = 0
     for or_card in range(1, len(lines) + 1):
-        total_cards += 1 + memo[or_card]
+        total_cards += memo[or_card] + 1
         won_cards = deque(list(range(or_card + 1, or_card + memo[or_card] + 1)))
         while len(won_cards) != 0:
             copy_card = won_cards.popleft()
