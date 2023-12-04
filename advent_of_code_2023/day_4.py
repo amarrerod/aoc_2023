@@ -10,6 +10,7 @@
 @Desc    :   None
 """
 
+from advent_of_code_2023.timer import clock
 from collections import deque
 import re
 
@@ -25,6 +26,7 @@ def wining_numbers(line):
     return int(card), matches
 
 
+@clock
 def won_copies(lines):
     memo = dict(tuple(wining_numbers(line) for line in lines))
     total_cards = 0
