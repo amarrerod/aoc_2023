@@ -12,7 +12,7 @@
 
 
 import pytest
-
+import sys
 from advent_of_code_2023.day_5 import get_seeds_conversions, convert_seed_to_location
 
 
@@ -33,3 +33,19 @@ def test_day_5_part_one(seeds_conversions):
     result = min([convert_seed_to_location(s, conversions) for s in seeds])
 
     assert result == expected
+
+
+def test_day_5_part_two(seeds_conversions):
+    expected = 46
+    seeds = seeds_conversions[0]
+    conversions = seeds_conversions[1]
+    seeds_ranges = tuple(seeds[i : i + 2] for i in range(0, len(seeds), 2))
+
+    min_location = sys.maxsize
+    for r in seeds_ranges:
+        for seed in range(r[0], r[0] + r[1]):
+            loc = convert_seed_to_location(seed, conversions)
+            if loc < min_location:
+                min_location = loc
+
+    assert min_location == expected

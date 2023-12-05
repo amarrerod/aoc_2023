@@ -12,7 +12,8 @@
 
 
 from advent_of_code_2023.timer import clock
-from collections import deque
+from multiprocessing import Pool
+from functools import partial
 import re
 
 categories = [
@@ -68,6 +69,21 @@ def get_seeds_conversions(lines):
     return seeds, conversions
 
 
+def multiprocess_part_two(seeds, conversions, n_processes=32):
+    seeds_ranges = tuple(seeds[i : i + 2] for i in range(0, len(seeds), 2))
+    pool = Pool(n_processes)
+    locations = []
+    for r in seeds_ranges:
+        min_range = min(
+            pool.map(
+                partial(convert_seed_to_location, conversions=conversions),
+                range(r[0], r[0] + r[1]),
+            )
+        )
+        locations.append(min_range)
+    return min(locations)
+
+
 def solve_puzzle():
     input_file = "advent_of_code_2023/inputs/day_5.txt"
 
@@ -76,8 +92,9 @@ def solve_puzzle():
 
     seeds, conversions = get_seeds_conversions(lines)
     solution_part_one = min([convert_seed_to_location(s, conversions) for s in seeds])
-
+    solution_part_two = multiprocess_part_two(seeds, conversions)
     print(f"The solution of day 5 part one is: {solution_part_one}")
+    print(f"The solution of day 5 part two is: {solution_part_two}")
 
 
 if __name__ == "__main__":
