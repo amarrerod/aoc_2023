@@ -13,7 +13,11 @@
 
 import pytest
 import sys
-from advent_of_code_2023.day_5 import get_seeds_conversions, convert_seed_to_location
+from advent_of_code_2023.day_5 import (
+    get_seeds_conversions,
+    convert_seed_to_location,
+    multiprocess_part_two,
+)
 
 
 @pytest.fixture
@@ -39,13 +43,6 @@ def test_day_5_part_two(seeds_conversions):
     expected = 46
     seeds = seeds_conversions[0]
     conversions = seeds_conversions[1]
-    seeds_ranges = tuple(seeds[i : i + 2] for i in range(0, len(seeds), 2))
-
-    min_location = sys.maxsize
-    for r in seeds_ranges:
-        for seed in range(r[0], r[0] + r[1]):
-            loc = convert_seed_to_location(seed, conversions)
-            if loc < min_location:
-                min_location = loc
+    min_location = multiprocess_part_two(seeds, conversions, n_processes=1)
 
     assert min_location == expected
