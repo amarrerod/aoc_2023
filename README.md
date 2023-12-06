@@ -2,6 +2,10 @@
 
 This repository contains my solutions for the Advent of Code 2023 event. Advent of Code is an annual event where programmers sharpen their skills through a series of challenging programming puzzles.
 
+<center>
+    <img src='img/grinch_coder.png'>
+</center>
+
 ## Structure
 
 Each day's puzzle solution is stored inside the advent_of_code_2023 directory named day_XX where XX is the day number. Inside such directory, you will find:
