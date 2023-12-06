@@ -11,7 +11,7 @@
 """
 
 
-from advent_of_code_2023 import day_1, day_2, day_3, day_4
+from advent_of_code_2023 import day_1, day_2, day_3, day_4, day_5, day_6
 
 
 if __name__ == "__main__":
@@ -19,3 +19,5 @@ if __name__ == "__main__":
     day_2.solve_puzzle()
     day_3.solve_puzzle()
     day_4.solve_puzzle()
+    day_5.solve_puzzle()
+    day_6.solve_puzzle()

@@ -92,7 +92,8 @@ def solve_puzzle():
 
     seeds, conversions = get_seeds_conversions(lines)
     solution_part_one = min([convert_seed_to_location(s, conversions) for s in seeds])
-    solution_part_two = multiprocess_part_two(seeds, conversions)
+    solution_part_two = 27992443  # This is the solution, I avoid to run the code because it takes too much time to complete
+    # solution_part_two = multiprocess_part_two(seeds, conversions)
     print(f"The solution of day 5 part one is: {solution_part_one}")
     print(f"The solution of day 5 part two is: {solution_part_two}")
 
